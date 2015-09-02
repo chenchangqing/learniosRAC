@@ -50,6 +50,7 @@ code_sign() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework '_500px_iOS_api.framework'
   install_framework 'AFImageDownloader.framework'
+  install_framework 'AFNetworking.framework'
   install_framework 'Kiwi.framework'
   install_framework 'ReactiveCocoa.framework'
   install_framework 'ReactiveViewModel.framework'
@@ -58,6 +59,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework '_500px_iOS_api.framework'
   install_framework 'AFImageDownloader.framework'
+  install_framework 'AFNetworking.framework'
   install_framework 'Kiwi.framework'
   install_framework 'ReactiveCocoa.framework'
   install_framework 'ReactiveViewModel.framework'
