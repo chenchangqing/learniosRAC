@@ -123,16 +123,6 @@ class ViewController: UIViewController {
         }
         
         loginCommand.execute(nil)
-        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * 3)), dispatch_get_main_queue()) { () -> Void in
-//            
-//            cancelLoginCommand.execute(nil)
-//        }
-//        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * 6)), dispatch_get_main_queue()) { () -> Void in
-//            
-//            loginCommand.execute(nil)
-//        }
     }
 
 }
