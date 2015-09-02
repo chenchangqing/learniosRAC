@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import ReactiveCocoa
 
 class CarthageTestTests: XCTestCase {
     
@@ -21,16 +22,81 @@ class CarthageTestTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    /** 
+     * 模拟取消登录
+     */
+    func testCancelLoginWithTakeUntil() {
+        
+        var isLogined = false
+        
+        // 取消登录命令
+        let cancelLoginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
+            
+            let signal = RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
+                
+                subscriber.sendNext("取消登录")
+                
+                return nil
+            })
+            
+            signal.subscribeNext({ (any:AnyObject!) -> Void in
+                
+                isLogined = false
+            })
+            return signal
         }
+        
+        cancelLoginCommand.execute(nil)
+        
+        // 登录命令
+        let loginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
+            
+            let signal =  RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
+                
+                while(!isLogined) {
+                    
+                    subscriber.sendNext("登录成功")
+                }
+                
+                return nil
+            }).takeUntil(cancelLoginCommand.executionSignals)
+            
+            signal.subscribeNext({ (any:AnyObject!) -> Void in
+                
+                isLogined = true
+            })
+
+            return signal
+        }
+        
+        loginCommand.execute(nil)
+        cancelLoginCommand.execute(nil)
+        XCTAssert(isLogined, "登录成功")
+        
+        
+//        var shouldBeGettingItems = true
+//        
+//        let subject = RACSubject()
+//        let cutOffSubject = RACSubject()
+//        
+//        subject
+//            .takeUntil(cutOffSubject)
+//            .subscribeNext { (any:AnyObject!) -> Void in
+//            
+//                println(any)
+//            XCTAssert(shouldBeGettingItems, "should support value as trigger")
+//        }
+//        
+//        shouldBeGettingItems = true
+//        subject.sendNext("test 1")
+//        subject.sendNext("test 2")
+//        
+////        cutOffSubject.sendNext(RACUnit.defaultUnit())
+////        cutOffSubject.sendCompleted()
+//        
+//        shouldBeGettingItems = false
+//        subject.sendNext("test 3")
+        
     }
     
 }

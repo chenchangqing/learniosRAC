@@ -13,14 +13,74 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        testCancelLoginWithTakeUntil(isCancel:false)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    /**
+     * 模拟取消登录
+     */
+    func testCancelLoginWithTakeUntil(#isCancel:Bool) {
+        
+        var isLogined = false
+        
+        // 取消登录命令
+        let cancelLoginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
+            
+            let signal = RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
+                
+                subscriber.sendNext(nil)
+                
+                return nil
+            })
+            return signal
+        }
+        
+        // 登录命令
+        let loginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
+            
+            let signal =  RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
+                
+                let duration:UInt64 = isCancel ? 4 : 2
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * duration)), dispatch_get_main_queue()) { () -> Void in
+                    
+                    subscriber.sendNext(nil)
+                }
+                
+                return nil
+            }).takeUntil(cancelLoginCommand.executionSignals)
+            
+            signal.subscribeNext({ (any:AnyObject!) -> Void in
+                
+                isLogined = true
+            })
+            
+            signal.subscribeCompleted({ () -> Void in
+                
+                if isLogined {
+                    
+                    println("登录成功")
+                } else {
+                    
+                    println("取消登录")
+                }
+            })
+            
+            return signal
+        }
+        
+        loginCommand.execute(nil)
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * 3)), dispatch_get_main_queue()) { () -> Void in
+            
+            cancelLoginCommand.execute(nil)
+        }
+    }
 
 }
 
