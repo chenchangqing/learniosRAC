@@ -76,16 +76,6 @@ class ViewController: UIViewController {
         }
         
         loginCommand.execute(nil)
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * 3)), dispatch_get_main_queue()) { () -> Void in
-            
-            cancelLoginCommand.execute(nil)
-        }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(NSEC_PER_SEC * 6)), dispatch_get_main_queue()) { () -> Void in
-        
-            loginCommand.execute(nil)
-        }
     }
     
     /**
@@ -94,19 +84,6 @@ class ViewController: UIViewController {
     func testCancelLoginWithTakeUntilBlock(#isCancel:Bool) {
         
         var isLogined = false
-        
-        // 是否取消登录命令
-//        let signal = RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
-//            
-//            subscriber.sendNext(isCancel)
-//            
-//            return nil
-//        })
-//        
-//        let cancelLoginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
-//            
-//            return signal
-//        }
         
         // 登录命令
         let loginCommand = RACCommand { (any:AnyObject!) -> RACSignal! in
