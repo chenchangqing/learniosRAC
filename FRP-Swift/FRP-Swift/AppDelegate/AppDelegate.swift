@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  FRP-Swift
+//  CJMvvm
 //
-//  Created by green on 15/9/3.
-//  Copyright (c) 2015年 green. All rights reserved.
+//  Created by green on 15/8/25.
+//  Copyright (c) 2015年 com.chenchangqing. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
         return true
     }
 
