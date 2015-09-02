@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import _500px_iOS_api
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let consumerKey = "DC2To2BS0ic1ChKDK15d44M42YHf9gbUJgdFoF0m"
+        let consumerSecret = "i8WL4chWoZ4kw9fh3jzHK7XzTer1y5tUNvsTFNnB"
+        PXRequest.setConsumerKey(consumerKey, consumerSecret: consumerSecret)
+        
+        let dataSourceProtocol = FRPPhotoModelDataSource.shareInstance()
+        dataSourceProtocol.searchFRPPhotoModelList().subscribeNext { (any:AnyObject!) -> Void in
+            
+            println(any)
+        }
         
         return true
     }

@@ -27,6 +27,9 @@
 		E6C9A5C71B97623B002500FC /* _ in Resources */ = {isa = PBXBuildFile; fileRef = E6C9A5B61B97623B002500FC /* _ */; };
 		E6C9A5C91B9762B0002500FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C9A5C81B9762B0002500FC /* Main.storyboard */; };
 		E6C9A5CB1B9764DF002500FC /* FRPPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5CA1B9764DF002500FC /* FRPPhotoModel.swift */; };
+		E6C9A5D31B976C3A002500FC /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5D21B976C3A002500FC /* JSONHelper.swift */; };
+		E6C9A5D51B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5D41B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift */; };
+		E6C9A5D71B9770F0002500FC /* FRPPhotoModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5D61B9770F0002500FC /* FRPPhotoModelDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,10 @@
 		E6C9A5B61B97623B002500FC /* _ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _; sourceTree = "<group>"; };
 		E6C9A5C81B9762B0002500FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6C9A5CA1B9764DF002500FC /* FRPPhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPPhotoModel.swift; sourceTree = "<group>"; };
+		E6C9A5D11B976C3A002500FC /* JSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHelper.h; sourceTree = "<group>"; };
+		E6C9A5D21B976C3A002500FC /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		E6C9A5D41B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPPhotoModelDataSourceProtocol.swift; sourceTree = "<group>"; };
+		E6C9A5D61B9770F0002500FC /* FRPPhotoModelDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPPhotoModelDataSource.swift; sourceTree = "<group>"; };
 		F9DCEA401B9F32199CA31374 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +198,7 @@
 			children = (
 				E6C9A59C1B97623B002500FC /* Database */,
 				E6C9A59E1B97623B002500FC /* Network */,
+				E6C9A5D41B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E6C9A59F1B97623B002500FC /* _ */,
+				E6C9A5D61B9770F0002500FC /* FRPPhotoModelDataSource.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -242,6 +251,8 @@
 		E6C9A5A81B97623B002500FC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E6C9A5D11B976C3A002500FC /* JSONHelper.h */,
+				E6C9A5D21B976C3A002500FC /* JSONHelper.swift */,
 				E6C9A5A91B97623B002500FC /* _ */,
 			);
 			path = Helper;
@@ -458,11 +469,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C9A5D71B9770F0002500FC /* FRPPhotoModelDataSource.swift in Sources */,
+				E6C9A5D51B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift in Sources */,
 				E6C9A5BC1B97623B002500FC /* RAC.swift in Sources */,
 				E6C9A5B81B97623B002500FC /* Typealias.swift in Sources */,
 				E6C9A5B71B97623B002500FC /* AppDelegate.swift in Sources */,
 				E6C9A5CB1B9764DF002500FC /* FRPPhotoModel.swift in Sources */,
 				E6C9A5BF1B97623B002500FC /* TableViewBindingHelper.swift in Sources */,
+				E6C9A5D31B976C3A002500FC /* JSONHelper.swift in Sources */,
 				E6C9A5BD1B97623B002500FC /* RACObserve.swift in Sources */,
 				E6C9A5BE1B97623B002500FC /* RACSignal+Extensions.swift in Sources */,
 			);
