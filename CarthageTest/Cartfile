@@ -1,0 +1,2 @@
+# 必须最低 2.3.1 版本
+github "ReactiveCocoa/ReactiveCocoa" >= 2.3.1

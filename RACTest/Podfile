@@ -1,0 +1,5 @@
+platform :ios, '7.0'
+pod 'Expecta', '~> 1.0.2'
+pod 'Specta', '~> 1.0.3'
+pod 'ReactiveCocoa', '~> 2.5'
+use_frameworks!
