@@ -47,7 +47,7 @@ class FRPFullSizePhotoViewController: UIViewController,UIPageViewControllerDataS
         photoViewController.photoViewModel = FRPPhotoViewModel(photoModel: fullSizePhotoViewModel.photoModel)
         
         // self'title
-        self.title = fullSizePhotoViewModel.photoModel.photoName
+        self.title = fullSizePhotoViewModel.photoModel.photoName!
         return photoViewController
     }
     
@@ -67,9 +67,6 @@ class FRPFullSizePhotoViewController: UIViewController,UIPageViewControllerDataS
         if photoIndex < 0 {
             
             photoIndex = array.count - 1
-        } else if photoIndex >= array.count {
-            
-            photoIndex = 0
         }
         fullSizePhotoViewModel.photoIndex = photoIndex
         return tempPhotoViewController()
@@ -79,16 +76,13 @@ class FRPFullSizePhotoViewController: UIViewController,UIPageViewControllerDataS
         
         let array = fullSizePhotoViewModel.photoModelList
         var photoIndex:Int = fullSizePhotoViewModel.photoIndex
-        photoIndex--
-        if photoIndex < 0 {
-            
-            photoIndex = array.count - 1
-        } else if photoIndex >= array.count {
+        photoIndex++
+        if photoIndex >= array.count {
             
             photoIndex = 0
         }
         
-        fullSizePhotoViewModel.photoIndex = fullSizePhotoViewModel.photoIndex + 1
+        fullSizePhotoViewModel.photoIndex = photoIndex
         return tempPhotoViewController()
     }
 

@@ -32,9 +32,9 @@ class FRPPhotoViewController: UIViewController {
         RACObserve(photoViewModel, "image") ~> RAC(imageView,"image")
         
         // 提示
-        photoViewModel.searchFullsizedURLCommand.executing.subscribeNextAs { (isExecuting:Bool) -> () in
+        RACObserve(photoViewModel, "isLoading").skip(1).subscribeNextAs { (isLoading:Bool) -> () in
             
-            if isExecuting {
+            if isLoading {
                 
                 SVProgressHUD.show()
             } else {

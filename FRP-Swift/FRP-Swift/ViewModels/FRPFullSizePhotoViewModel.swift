@@ -28,16 +28,7 @@ class FRPFullSizePhotoViewModel: RVMViewModel {
         
         get {
             
-            if photoIndex < 0 {
-            
-                return photoModelList[photoModelList.count - 1]
-            } else if photoIndex >= photoModelList.count {
-                
-                return photoModelList[0]
-            } else {
-                
-                return photoModelList[photoIndex]
-            }
+            return photoModelList[photoIndex]
         }
     }
     

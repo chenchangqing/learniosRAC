@@ -15,6 +15,7 @@ class FRPPhotoViewModel: ImageViewModel {
     let photoModelDataSourceProtocol = FRPPhotoModelDataSource.shareInstance()
     var searchFullsizedURLCommand :RACCommand!
     var errorMsg : String = ""
+    var isLoading : Bool = false
    
     init(photoModel:FRPPhotoModel) {
         
@@ -23,6 +24,7 @@ class FRPPhotoViewModel: ImageViewModel {
         // 初始化command
         searchFullsizedURLCommand = RACCommand(signalBlock: { (any:AnyObject!) -> RACSignal! in
             
+            self.setValue(true, forKey: "isLoading")
             if let identifier=(self.model as! FRPPhotoModel).identifier {
                 
                 return self.photoModelDataSourceProtocol.searchFullsizedURL(identifier)
@@ -36,25 +38,40 @@ class FRPPhotoViewModel: ImageViewModel {
         // 错误处理
         searchFullsizedURLCommand.errors.subscribeNextAs { (error:NSError) -> () in
             
+            self.setValue(false, forKey: "isLoading")
+            self.setValue(error.localizedDescription, forKey: "errorMsg")
+        }
+        downloadImageCommand.errors.subscribeNextAs { (error:NSError) -> () in
+            
+            self.setValue(false, forKey: "isLoading")
             self.setValue(error.localizedDescription, forKey: "errorMsg")
         }
         
         // 更新大图URLString
-        searchFullsizedURLCommand.executionSignals.switchToLatest().subscribeNextAs { (fullsizedURL:String) -> () in
+        searchFullsizedURLCommand.executionSignals.switchToLatest()
+//            .takeUntil(didBecomeInactiveSignal.skip(1))
+            .subscribeNext({ (any:AnyObject!) -> Void in
             
             // 更新图片
-            self.urlString = fullsizedURL
+            self.urlString = any as? String
             self.downloadImageCommand.execute(nil)
-        }
+        }, completed: { () -> Void in
+            
+            println("searchFullsizedURLCommand completed")
+        })
+        
+        downloadImageCommand.executionSignals.switchToLatest()
+//            .takeUntil(didBecomeInactiveSignal.skip(1))
+            .subscribeNext({ (any:AnyObject!) -> Void in
+            
+            self.setValue(false, forKey: "isLoading")
+        }, completed: { () -> Void in
+            
+            self.setValue(false, forKey: "isLoading")
+        })
         
         // 激活后开始查询
         didBecomeActiveSignal.subscribeNext { (any:AnyObject!) -> Void in
-            
-            searchFullsizedURLCommand.execute(nil)
-        }
-        
-        // Observe
-        RACObserve(self, "model").subscribeNext { (any:AnyObject!) -> Void in
             
             searchFullsizedURLCommand.execute(nil)
         }
