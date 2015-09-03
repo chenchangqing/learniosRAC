@@ -44,6 +44,7 @@ class FRPGalleryViewController: UICollectionViewController {
         // Configure the cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! FRPCell
     
+        cell.bindViewModel((viewModel.model as! [FRPPhotoModel])[indexPath.row])
         return cell
     }
 

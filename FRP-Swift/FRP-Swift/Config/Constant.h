@@ -8,3 +8,5 @@
 
 
 
+// error
+#define kErrorDomain @"com.FRP-Swift"
