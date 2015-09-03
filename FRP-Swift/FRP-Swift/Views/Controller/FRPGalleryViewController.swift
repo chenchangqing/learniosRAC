@@ -13,11 +13,16 @@ let reuseIdentifier = "Cell"
 
 class FRPGalleryViewController: UICollectionViewController {
 
-    private var viewModel = FRPGalleryViewModel()
+    private let viewModel = FRPGalleryViewModel()
+
+    init() {
+
+        super.init(collectionViewLayout: FRPGalleryFlowLayout())
+    }
 
     required init(coder aDecoder: NSCoder) {
 
-        super.init(collectionViewLayout: FRPGalleryFlowLayout())
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -58,10 +63,10 @@ class FRPGalleryViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        (viewModel.model as! NSArray).rac_sequence.signal().subscribeNext { (any:AnyObject!) -> Void in
-            
-            println((any as! FRPPhotoModel).fullsizedURL)
-        }
+        let fullSizePhotoViewController = FRPFullSizePhotoViewController()
+        fullSizePhotoViewController.fullSizePhotoViewModel = FRPFullSizePhotoViewModel(photoModelList: viewModel.model as! [FRPPhotoModel], photoIndex: indexPath.item)
+        
+        self.navigationController!.pushViewController(fullSizePhotoViewController, animated: true)
     }
 
     // MARK: UICollectionViewDataSource

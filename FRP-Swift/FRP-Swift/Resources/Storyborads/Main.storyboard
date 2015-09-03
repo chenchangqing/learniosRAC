@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AwW-q2-t1t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vwo-id-6o0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Gallery View Controller-->
         <scene sceneID="nUh-ML-kmG">
             <objects>
-                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="a67-1P-L1c" customClass="FRPGalleryViewController" customModule="FRP_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FRPGalleryViewController" automaticallyAdjustsScrollViewInsets="NO" id="a67-1P-L1c" customClass="FRPGalleryViewController" customModule="FRP_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oIe-DU-cGm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,26 +28,25 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHa-Z7-Ztd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="827.5" y="445.5"/>
+            <point key="canvasLocation" x="1639.5" y="445.5"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="qdn-4e-JXb">
+        <scene sceneID="4Hr-bG-uuX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AwW-q2-t1t" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vwo-id-6o0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kxs-AG-M00">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="omB-DZ-lV9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="a67-1P-L1c" kind="relationship" relationship="rootViewController" id="tXm-h5-0kY"/>
+                        <segue destination="a67-1P-L1c" kind="relationship" relationship="rootViewController" id="YRP-tS-bRy"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Obi-Xu-2yX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLi-gF-iQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="446"/>
+            <point key="canvasLocation" x="827" y="445"/>
         </scene>
     </scenes>
 </document>

@@ -7,8 +7,9 @@
 //
 
 import ReactiveCocoa
+import ReactiveViewModel
 
-class ImageViewModel: NSObject {
+class ImageViewModel: RVMViewModel {
    
     var urlString : String?         // 图片路径
     {
@@ -33,9 +34,9 @@ class ImageViewModel: NSObject {
     /**
      * 初始化 
      */
-    init(urlString:String?,defaultImage:UIImage = UIImage(),isNeedCompress:Bool = true) {
+    init(urlString:String?,model:AnyObject? = nil,defaultImage:UIImage = UIImage(),isNeedCompress:Bool = true) {
         
-        super.init()
+        super.init(model: model)
         
         self.urlString  = urlString
         self.image      = defaultImage

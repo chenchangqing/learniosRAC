@@ -103,7 +103,7 @@ class FRPPhotoModelDataSource: FRPPhotoModelDataSourceProtocol {
             
             return (any["images"] as? NSArray)?.rac_sequence.filter({ (any:AnyObject!) -> Bool in
                 
-                return (any["size"] as? Int) == 3
+                return (any["size"] as? Int) == 4
             }).map({ (any:AnyObject!) -> AnyObject! in
                 
                 return any["url"]

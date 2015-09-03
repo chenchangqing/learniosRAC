@@ -15,6 +15,10 @@
 		E693C87C1B980F9000055936 /* ImageDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C87B1B980F9000055936 /* ImageDataSourceProtocol.swift */; };
 		E693C87E1B980F9C00055936 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C87D1B980F9C00055936 /* ImageDataSource.swift */; };
 		E693C8811B98101800055936 /* ErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C8801B98101800055936 /* ErrorEnum.swift */; };
+		E693C8A21B98AEC100055936 /* FRPPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C8A11B98AEC100055936 /* FRPPhotoViewModel.swift */; };
+		E693C8A41B98AF6D00055936 /* FRPPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C8A31B98AF6D00055936 /* FRPPhotoViewController.swift */; };
+		E693C8A61B98BEAE00055936 /* FRPFullSizePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C8A51B98BEAE00055936 /* FRPFullSizePhotoViewModel.swift */; };
+		E693C8A81B98C18C00055936 /* FRPFullSizePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C8A71B98C18C00055936 /* FRPFullSizePhotoViewController.swift */; };
 		E6C9A5881B975D45002500FC /* FRP_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5871B975D45002500FC /* FRP_SwiftTests.swift */; };
 		E6C9A5B71B97623B002500FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A5961B97623B002500FC /* AppDelegate.swift */; };
 		E6C9A5B81B97623B002500FC /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C9A59A1B97623B002500FC /* Typealias.swift */; };
@@ -60,6 +64,10 @@
 		E693C87B1B980F9000055936 /* ImageDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataSourceProtocol.swift; sourceTree = "<group>"; };
 		E693C87D1B980F9C00055936 /* ImageDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 		E693C8801B98101800055936 /* ErrorEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEnum.swift; sourceTree = "<group>"; };
+		E693C8A11B98AEC100055936 /* FRPPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPPhotoViewModel.swift; sourceTree = "<group>"; };
+		E693C8A31B98AF6D00055936 /* FRPPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPPhotoViewController.swift; sourceTree = "<group>"; };
+		E693C8A51B98BEAE00055936 /* FRPFullSizePhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPFullSizePhotoViewModel.swift; sourceTree = "<group>"; };
+		E693C8A71B98C18C00055936 /* FRPFullSizePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRPFullSizePhotoViewController.swift; sourceTree = "<group>"; };
 		E6C9A56C1B975D45002500FC /* FRP-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FRP-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C9A5701B975D45002500FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6C9A5811B975D45002500FC /* FRP-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FRP-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +150,8 @@
 			children = (
 				E693C8731B97E97800055936 /* FRPGalleryViewController.swift */,
 				E693C8771B97EC8500055936 /* FRPGalleryFlowLayout.swift */,
+				E693C8A31B98AF6D00055936 /* FRPPhotoViewController.swift */,
+				E693C8A71B98C18C00055936 /* FRPFullSizePhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,8 +352,10 @@
 			isa = PBXGroup;
 			children = (
 				E6C9A5B31B97623B002500FC /* _ */,
-				E6C9A5D81B979106002500FC /* FRPGalleryViewModel.swift */,
 				E693C8791B980F7A00055936 /* ImageViewModel.swift */,
+				E6C9A5D81B979106002500FC /* FRPGalleryViewModel.swift */,
+				E693C8A11B98AEC100055936 /* FRPPhotoViewModel.swift */,
+				E693C8A51B98BEAE00055936 /* FRPFullSizePhotoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -520,6 +532,8 @@
 				E6C9A5D71B9770F0002500FC /* FRPPhotoModelDataSource.swift in Sources */,
 				E6C9A5D51B976D55002500FC /* FRPPhotoModelDataSourceProtocol.swift in Sources */,
 				E6C9A5D91B979106002500FC /* FRPGalleryViewModel.swift in Sources */,
+				E693C8A21B98AEC100055936 /* FRPPhotoViewModel.swift in Sources */,
+				E693C8A41B98AF6D00055936 /* FRPPhotoViewController.swift in Sources */,
 				E6C9A5BC1B97623B002500FC /* RAC.swift in Sources */,
 				E693C8741B97E97800055936 /* FRPGalleryViewController.swift in Sources */,
 				E693C8811B98101800055936 /* ErrorEnum.swift in Sources */,
@@ -527,8 +541,10 @@
 				E693C87A1B980F7A00055936 /* ImageViewModel.swift in Sources */,
 				E6C9A5B81B97623B002500FC /* Typealias.swift in Sources */,
 				E693C87C1B980F9000055936 /* ImageDataSourceProtocol.swift in Sources */,
+				E693C8A81B98C18C00055936 /* FRPFullSizePhotoViewController.swift in Sources */,
 				E6C9A5B71B97623B002500FC /* AppDelegate.swift in Sources */,
 				E6C9A5CB1B9764DF002500FC /* FRPPhotoModel.swift in Sources */,
+				E693C8A61B98BEAE00055936 /* FRPFullSizePhotoViewModel.swift in Sources */,
 				E6C9A5BF1B97623B002500FC /* TableViewBindingHelper.swift in Sources */,
 				E6C9A5D31B976C3A002500FC /* JSONHelper.swift in Sources */,
 				E693C87E1B980F9C00055936 /* ImageDataSource.swift in Sources */,
