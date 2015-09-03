@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 let reuseIdentifier = "Cell"
 
 class FRPGalleryViewController: UICollectionViewController {
 
-    private var viewModel = FRPGalleryViewModel(photoModelList: [FRPPhotoModel]())
+    private var viewModel = FRPGalleryViewModel()
 
     required init(coder aDecoder: NSCoder) {
 
@@ -29,18 +30,38 @@ class FRPGalleryViewController: UICollectionViewController {
             
             self.collectionView!.reloadData()
         }
-        self.edgesForExtendedLayout = UIRectEdge.None
         
-        // cell did clicked
-        self.rac_signalForSelector(Selector("collectionView:didSelectItemAtIndexPath:"), fromProtocol: UICollectionViewDelegate.self).subscribeNext { (any:AnyObject!) -> Void in
-            println(any)
+        // 激活model
+        viewModel.active = true
+        
+        // 提示
+        viewModel.searchFRPPhotoModelListCommand.executing.subscribeNextAs { (isExecuting:Bool) -> () in
             
+            if isExecuting {
+                
+                SVProgressHUD.show()
+            } else {
+                
+                if !self.viewModel.errorMsg.isEmpty {
+                    
+                    SVProgressHUD.showErrorWithStatus(self.viewModel.errorMsg)
+                } else {
+                    
+                    SVProgressHUD.dismiss()
+                }
+            }
         }
+        
+        self.edgesForExtendedLayout = UIRectEdge.None
         
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+        (viewModel.model as! NSArray).rac_sequence.signal().subscribeNext { (any:AnyObject!) -> Void in
+            
+            println((any as! FRPPhotoModel).fullsizedURL)
+        }
     }
 
     // MARK: UICollectionViewDataSource

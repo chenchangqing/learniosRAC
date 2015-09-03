@@ -63,13 +63,13 @@ class FRPPhotoModelDataSource: FRPPhotoModelDataSourceProtocol {
             
             result <-- any["photos"]
             
-            for m in result {
-                
-                self.searchFullsizedURL(m.identifier!).subscribeNextAs{(thumbnailURL:String) in
-                    
-                    m.thumbnailURL = thumbnailURL
-                }
-            }
+//            for m in result {
+//                
+//                self.searchFullsizedURL(m.identifier!).subscribeNextAs{(thumbnailURL:String) in
+//                    
+//                    m.thumbnailURL = thumbnailURL
+//                }
+//            }
             
             return result
         })
