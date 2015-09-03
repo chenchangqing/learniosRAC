@@ -29,6 +29,8 @@ class FRPGalleryViewController: UICollectionViewController {
             
             self.collectionView!.reloadData()
         }
+        self.edgesForExtendedLayout = UIRectEdge.None
+
     }
 
     // MARK: UICollectionViewDataSource
