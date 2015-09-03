@@ -12,6 +12,16 @@ import AFNetworking
 
 class FRPPhotoModelDataSource: FRPPhotoModelDataSourceProtocol {
     
+    private lazy var apiHelper :PXAPIHelper = {
+        
+        let consumerKey = "DC2To2BS0ic1ChKDK15d44M42YHf9gbUJgdFoF0m"
+        let consumerSecret = "i8WL4chWoZ4kw9fh3jzHK7XzTer1y5tUNvsTFNnB"
+        PXRequest.setConsumerKey(consumerKey, consumerSecret: consumerSecret)
+       
+        let apiHelper = PXRequest.apiHelper()
+        return apiHelper
+    }()
+    
     class func shareInstance()->FRPPhotoModelDataSourceProtocol{
         struct YRSingleton{
             static var predicate:dispatch_once_t = 0
@@ -28,7 +38,7 @@ class FRPPhotoModelDataSource: FRPPhotoModelDataSourceProtocol {
         return RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
             
             // 查询缩略图片列表请求
-            let searchFRPPhotoModelListRequest = PXRequest.apiHelper().urlRequestForPhotoFeature( PXAPIHelperPhotoFeature.Popular, resultsPerPage: 100, page: 0, photoSizes: PXPhotoModelSize.Thumbnail, sortOrder: PXAPIHelperSortOrder.Rating, except: PXPhotoModelCategory.PXPhotoModelCategoryNude)
+            let searchFRPPhotoModelListRequest = self.apiHelper.urlRequestForPhotoFeature( PXAPIHelperPhotoFeature.Popular, resultsPerPage: 100, page: 0, photoSizes: PXPhotoModelSize.Thumbnail, sortOrder: PXAPIHelperSortOrder.Rating, except: PXPhotoModelCategory.PXPhotoModelCategoryNude)
             
             // 使用AF获取数据
             let operation = AFHTTPRequestOperation(request: searchFRPPhotoModelListRequest)
@@ -70,7 +80,7 @@ class FRPPhotoModelDataSource: FRPPhotoModelDataSourceProtocol {
         return RACSignal.createSignal({ (subscriber:RACSubscriber!) -> RACDisposable! in
             
             // 查询大图请求
-            let searchFullsizedURLRequest = PXRequest.apiHelper().urlRequestForPhotoID(identifier.integerValue)
+            let searchFullsizedURLRequest = self.apiHelper.urlRequestForPhotoID(identifier.integerValue)
             
             // 使用AF获取数据
             let operation = AFHTTPRequestOperation(request: searchFullsizedURLRequest)
