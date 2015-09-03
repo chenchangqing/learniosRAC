@@ -30,7 +30,17 @@ class FRPGalleryViewController: UICollectionViewController {
             self.collectionView!.reloadData()
         }
         self.edgesForExtendedLayout = UIRectEdge.None
-
+        
+        // cell did clicked
+        self.rac_signalForSelector(Selector("collectionView:didSelectItemAtIndexPath:"), fromProtocol: UICollectionViewDelegate.self).subscribeNext { (any:AnyObject!) -> Void in
+            println(any)
+            
+        }
+        
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
     }
 
     // MARK: UICollectionViewDataSource
