@@ -19,3 +19,16 @@ func takeUntil(signalTrigger: RACSignal!) -> RACSignal!
  * @return 信号自身
  */
 func takeUntilBlock(predicate: ((AnyObject!) -> Bool)!) -> Self!
+
+
+        // RACCommand 完成
+        self.registerViewModel.searchZonesArrayCommand.executionSignals.flattenMap { (any:AnyObject!) -> RACStream! in
+            
+            return any.materialize().filter({ (any:AnyObject!) -> Bool in
+                
+                return (any as! RACEvent).eventType.value == RACEventTypeCompleted.value
+            })
+        }.subscribeNextAs({ (completed:Bool) -> () in
+            
+            println(completed)
+        })
