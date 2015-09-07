@@ -28,7 +28,7 @@ func takeUntilBlock(predicate: ((AnyObject!) -> Bool)!) -> Self!
                 
                 return (any as! RACEvent).eventType.value == RACEventTypeCompleted.value
             })
-        }.subscribeNextAs({ (completed:Bool) -> () in
+        }.subscribeNextAs({ (completed:RACEvent!) -> () in
             
             println(completed)
         })
